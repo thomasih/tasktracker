@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --theme-color: #f9c6c9;
+}
+
+body {
+    background-color: var(--theme-color);
+    font-family: 'Arial, sans-serif';
+}
