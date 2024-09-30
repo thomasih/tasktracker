@@ -1,1 +1,18 @@
-<p>task works!</p>
+<div class="row task-container">
+    <div class="col-md-6 task-box">
+        <h3>Incomplete Tasks</h3>
+        <ul class="list-group">
+            <li *ngFor="let task of incompleteTasks" class="list-group-item">
+                {{ task.name }}
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-6 task-box">
+        <h3>Completed Tasks</h3>
+        <ul class="list-group">
+            <li *ngFor="let task of completeTasks" class="list-group-item">
+                {{ task.name }}
+            </li>
+        </ul>
+    </div>
+</div>
