@@ -1,14 +1,50 @@
-<div class="event-menu">
-    <h3>Add New Event</h3>
-    <form action="">
+<div class="container wide-container">
+  <div class="row justify-content-center align-items-start">
+    
+    <!-- Upcoming Events Section -->
+    <div class="col-lg-6 mb-4">
+      <h3 class="text-center">Upcoming Events</h3>
+      
+      <div class="card mb-3" *ngIf="events.length > 0; else noEventsMessage">
+        <ul class="list-group list-group-flush">
+          <li 
+            *ngFor="let event of events; let i = index" 
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <div>
+              <!-- Clickable Event Title -->
+              <h5 class="event-title" (click)="goToTasks(event.id)">{{ event.name }}</h5>
+              <p class="mb-0 text-muted">{{ event.dueDate | date: 'fullDate' }}</p>
+            </div>
+            <button class="btn btn-danger btn-sm" (click)="removeEvent(i)">
+              Remove
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <ng-template #noEventsMessage>
+        <div class="alert alert-info" role="alert">
+          No upcoming events. Add one on the right!
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- Add New Event Section -->
+    <div class="col-lg-6 mb-4">
+      <h3 class="text-center">Add a New Event</h3>
+      <form (ngSubmit)="addEvent()">
         <div class="form-group">
-            <label for="event-name">Event Name</label>
-            <input type="text" class="form-control" id="event-name" />
+          <label for="eventName">Event Name</label>
+          <input [(ngModel)]="newEvent.name" type="text" class="form-control" id="eventName" placeholder="Enter event name" name="name" required>
         </div>
         <div class="form-group">
-            <label for="event-data">Due Date</label>
-            <input type="date" class="form-control" id="event-date" />
+          <label for="eventDate">Due Date</label>
+          <input [(ngModel)]="newEvent.dueDate" type="date" class="form-control" id="eventDate" name="dueDate" required>
         </div>
-        <button type="submit" class="btn btn-primary">Add Event</button>
-    </form>
+        <button type="submit" class="btn btn-primary btn-block">Add Event</button>
+      </form>
+    </div>
+  
+  </div>
 </div>

@@ -1,18 +1,46 @@
+<div class="task-header">
+    <h2>{{ eventName }}</h2>
+</div>
+  
 <div class="row task-container">
+    <!-- Incomplete Tasks Section -->
     <div class="col-md-6 task-box">
-        <h3>Incomplete Tasks</h3>
-        <ul class="list-group">
-            <li *ngFor="let task of incompleteTasks" class="list-group-item">
-                {{ task.name }}
-            </li>
-        </ul>
+      <h3>Incomplete Tasks</h3>
+      <ul class="list-group">
+        <li *ngFor="let task of incompleteTasks" 
+            class="list-group-item d-flex justify-content-between align-items-center"
+            [ngStyle]="{'background-color': getPriorityColor(task.priorityLevel)}">
+            <input type="checkbox" (change)="toggleTaskCompletion(task)" />
+            <span>{{ task.description }}</span>
+            <span class="badge badge-primary">Priority {{ task.priorityLevel }}</span>
+        </li>
+      </ul>
     </div>
+  
+    <!-- Completed Tasks Section -->
     <div class="col-md-6 task-box">
-        <h3>Completed Tasks</h3>
-        <ul class="list-group">
-            <li *ngFor="let task of completeTasks" class="list-group-item">
-                {{ task.name }}
-            </li>
-        </ul>
+      <h3>Completed Tasks</h3>
+      <ul class="list-group">
+        <li *ngFor="let task of completeTasks" 
+            class="list-group-item d-flex justify-content-between align-items-center completed-task">
+            <input type="checkbox" checked (change)="toggleTaskCompletion(task)" />
+            <span>{{ task.description }}</span>
+            <span class="badge badge-success">Priority {{ task.priorityLevel }}</span>
+        </li>
+      </ul>
+    </div>
+</div>
+  
+<!-- Add New Task Form -->
+<div class="add-task-form-container">
+    <div class="add-task-form">
+        <h5>Add New Task</h5>
+        <input [(ngModel)]="newTaskDescription" class="form-control mb-2" placeholder="Enter task description" />
+        <select [(ngModel)]="newTaskPriority" class="form-control mb-2">
+            <option [value]="1">Priority 1</option>
+            <option [value]="2">Priority 2</option>
+            <option [value]="3">Priority 3</option>
+        </select>
+        <button class="btn btn-primary btn-block" (click)="addTask()">Add Task</button>
     </div>
 </div>

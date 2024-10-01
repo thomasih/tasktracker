@@ -1,7 +1,6 @@
 .theme-selector {
     position: fixed;
     bottom: 20px;
-    left: 50%;
     transform: translateY(-50%);
     display: flex;
     justify-content: center;

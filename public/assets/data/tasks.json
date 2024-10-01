@@ -1,0 +1,73 @@
+[
+    {
+      "id": 1,
+      "description": "Prepare project outline",
+      "priorityLevel": 2,
+      "eventId": 1,
+      "completed": false
+    },
+    {
+      "id": 2,
+      "description": "Create slides for presentation",
+      "priorityLevel": 3,
+      "eventId": 2,
+      "completed": true
+    },
+    {
+      "id": 3,
+      "description": "Write report draft",
+      "priorityLevel": 1,
+      "eventId": 3,
+      "completed": false
+    },
+    {
+      "id": 4,
+      "description": "Review feedback from client",
+      "priorityLevel": 2,
+      "eventId": 2,
+      "completed": false
+    },
+    {
+      "id": 5,
+      "description": "Finalize report for submission",
+      "priorityLevel": 1,
+      "eventId": 3,
+      "completed": false
+    },
+    {
+      "id": 6,
+      "description": "Organize project kickoff meeting agenda",
+      "priorityLevel": 3,
+      "eventId": 1,
+      "completed": true
+    },
+    {
+      "id": 7,
+      "description": "Send meeting invitations to team",
+      "priorityLevel": 2,
+      "eventId": 1,
+      "completed": false
+    },
+    {
+      "id": 8,
+      "description": "Update client on project progress",
+      "priorityLevel": 1,
+      "eventId": 2,
+      "completed": false
+    },
+    {
+      "id": 9,
+      "description": "Follow up on pending approvals",
+      "priorityLevel": 3,
+      "eventId": 2,
+      "completed": false
+    },
+    {
+      "id": 10,
+      "description": "Proofread final report",
+      "priorityLevel": 2,
+      "eventId": 3,
+      "completed": false
+    }
+  ]
+  

@@ -12,9 +12,9 @@ export class ThemeSelectorComponent {
   colorThemes =
   [
     '#c6e2f9',
-    '#f9c6c9',
-    '#c9f9c6',
-    '#f6e8b8',
+    '#f4d4c5',
+    '#d5f4c4',
+    '#f9e4c5',
     '#e8d7f9'
   ];
 
