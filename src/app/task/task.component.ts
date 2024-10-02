@@ -1,30 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { TaskService } from '../task.service';
+import { EventService } from '../event.service';
+import { Task } from '../task.model';
+import { AppEvent } from '../event-menu.model';
 import { FormsModule } from '@angular/forms';
-
-interface Task {
-  id: number;
-  description: string;
-  priorityLevel: number;
-  eventId: number;
-  completed: boolean;
-}
-
-interface Event {
-  id: number;
-  name: string;
-  dueDate: string;
-  userId: number;
-}
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-task',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './task.component.html',
-  styleUrl: './task.component.css'
+  styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
   incompleteTasks: Task[] = [];
@@ -32,29 +20,26 @@ export class TaskComponent implements OnInit {
   eventName: string = '';
   allTasks: Task[] = [];
   eventId!: number;
-  events: Event[] = [];
   
   newTaskDescription: string = '';
   newTaskPriority: number = 1;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute, private taskService: TaskService, private eventService: EventService) {} // Inject EventService
 
   ngOnInit() {
-    // subscribe to route parameters to retrieve event id
     this.route.paramMap.subscribe(params => {
       this.eventId = +params.get('eventId')!;
 
       if (this.eventId) {
-        this.fetchTasks();
+        this.loadTasks();
         this.fetchEventName();
       }
     });
   }
 
-  fetchTasks() {
-    this.http.get<Task[]>('assets/data/tasks.json').subscribe((data) => {
-      this.allTasks = data;
-      const eventTasks = this.allTasks.filter(task => task.eventId === this.eventId);
+  loadTasks() {
+    this.taskService.getTasks().subscribe((data: Task[]) => {
+      const eventTasks = data.filter(task => task.eventId === this.eventId);
       eventTasks.sort((a, b) => a.priorityLevel - b.priorityLevel);
       this.incompleteTasks = eventTasks.filter(task => !task.completed);
       this.completeTasks = eventTasks.filter(task => task.completed);
@@ -62,11 +47,9 @@ export class TaskComponent implements OnInit {
   }
 
   fetchEventName() {
-    this.http.get<Event[]>('assets/data/events.json').subscribe((data) => {
-      this.events = data;
-      const currentEvent = this.events.find(event => event.id === this.eventId);
-
-      this.eventName = currentEvent ? currentEvent.name : 'Event';
+    this.eventService.getEvents().subscribe((events: AppEvent[]) => {
+      const event = events.find(e => e.id === this.eventId);
+      if (event) { this.eventName = event.name; } 
     });
   }
 
@@ -83,7 +66,11 @@ export class TaskComponent implements OnInit {
 
     this.incompleteTasks.sort((a, b) => a.priorityLevel - b.priorityLevel);
     this.completeTasks.sort((a, b) => a.priorityLevel - b.priorityLevel);
+
+    this.updateTaskCompletion(task);
   }
+
+  updateTaskCompletion(task: Task) { this.taskService.updateTask(task).subscribe(); }  
 
   addTask() {
     if (this.newTaskDescription.trim() === '') {
@@ -91,18 +78,23 @@ export class TaskComponent implements OnInit {
     }
 
     const newTask: Task = {
-      id: Math.max(...this.allTasks.map(t => t.id)) + 1,
+      id: 0,
       description: this.newTaskDescription,
       priorityLevel: this.newTaskPriority,
       eventId: this.eventId,
       completed: false
     };
 
-    this.incompleteTasks.push(newTask);
-    this.incompleteTasks.sort((a, b) => a.priorityLevel - b.priorityLevel);
+    this.taskService.addTask(newTask).subscribe(() => { this.loadTasks(); });
 
     this.newTaskDescription = '';
     this.newTaskPriority = 1;
+  }
+
+  removeTask(taskId: number) {
+    this.taskService.deleteTask(taskId).subscribe(() => {
+      this.completeTasks = this.completeTasks.filter(task => task.id !== taskId);
+    });
   }
 
   getPriorityColor(priorityLevel: number): string {

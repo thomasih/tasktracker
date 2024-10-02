@@ -1,17 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button type="button" style="border: 0cap; margin-left: 2%;" (click)="toggleComponent()">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-  <div class="container">
-    <div class="navbar-brand mx-auto app-title">Task Tracker</div>
-  
-      <div class="navbar-nav ml-auto d-flex align-items-center">
-  
-        <img class="profile-pic" src="assets/images/pfp.jpg" alt="Profile">
-  
-        <button style="border: 0cap; margin-left: 2%;" (click)="loginPressed()">Logout</button>
-  
-      </div>
+<header class="app-header">
+  <div class="header-title">Task Tracker</div>
+  <div class="header-buttons">
+    <button class="header-btn" (click)="toggleComponent()">Events</button>
+    <button class="header-btn" (click)="loginPressed()">Logout</button>
   </div>
-</nav>
+</header>

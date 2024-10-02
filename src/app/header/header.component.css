@@ -1,15 +1,57 @@
-.app-title {
-    font-size: 1.5rem;
-    font-weight: bold;
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap');
+
+:root {
+  --theme-color: #f0f0f0;
 }
 
-.profile-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
+body {
+  background-color: var(--theme-color);
 }
 
-.bg-light {
-    background-color: #f8f9fa !important;
+.app-header {
+  background-color: var(--theme-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.header-title {
+  font-size: 2rem; /* Slightly larger for a more prominent look */
+  font-family: 'Bebas Neue', sans-serif; /* Change to Bebas Neue for a bold, modern feel */
+  color: black;
+  letter-spacing: 1.5px; /* Subtle letter-spacing for a professional, brand-like look */
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.header-btn {
+  background-color: var(--theme-color);
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif; /* Use Montserrat for buttons for a clean, modern look */
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.header-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Subtle hover effect */
+}
+
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1.7rem;
+  }
+
+  .header-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
 }
