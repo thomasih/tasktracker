@@ -11,11 +11,10 @@ import { CommonModule } from '@angular/common';
 export class ThemeSelectorComponent {
   colorThemes =
   [
-    '#c6e2f9',
-    '#f4d4c5',
-    '#d5f4c4',
-    '#f9e4c5',
-    '#e8d7f9'
+    '#93E1D8',
+    '#FFF5E1',
+    '#AED9E0',
+    '#CDB5A7'
   ];
 
   setTheme(color: string) {

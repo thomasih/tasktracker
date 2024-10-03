@@ -1,17 +1,21 @@
 .theme-selector {
-    position: fixed;
-    bottom: 20px;
-    transform: translateY(-50%);
+    margin-top: 5%;
     display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.color-btn {
-    width: 40px;
-    height: 40px;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .color-btn {
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    margin: 0 10px;
     cursor: pointer;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, border-color 0.3s ease;
+  }
+  
+  .color-btn:hover {
+    transform: scale(1.1);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+  

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EventService } from '../event.service';
 import { AppEvent } from '../event-menu.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-event-menu',
@@ -15,17 +16,18 @@ import { CommonModule } from '@angular/common';
 export class EventMenuComponent implements OnInit {
   events: AppEvent[] = [];
   newEvent: AppEvent = { id: 0, name: '', dueDate: '', userId: 0 };
-  currentUserId: number = 101;
+  currentUserId: number = 0;
 
-  constructor(private eventService: EventService, private router: Router) {}
+  constructor(private eventService: EventService, private route: ActivatedRoute, private router: Router, private userService: UserService) {}
 
   ngOnInit() {
+    this.currentUserId = this.userService.getUserId();
     this.loadEvents();
   }
 
   loadEvents() {
     this.eventService.getEvents().subscribe((data: AppEvent[]) => {
-      this.events = data;
+      this.events = data.filter(event => event.userId === this.currentUserId);
       this.events.sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
     });
   }
