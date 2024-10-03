@@ -1,0 +1,38 @@
+[
+  {
+    "Id": 1,
+    "Name": "Project Kickoff Meeting",
+    "DueDate": "2024-10-05T00:00:00",
+    "UserId": 1
+  },
+  {
+    "Id": 2,
+    "Name": "Client Presentation",
+    "DueDate": "2024-10-10T00:00:00",
+    "UserId": 1
+  },
+  {
+    "Id": 3,
+    "Name": "Final Report Submission",
+    "DueDate": "2024-10-15T00:00:00",
+    "UserId": 1
+  },
+  {
+    "Id": 4,
+    "Name": "Team Retrospective",
+    "DueDate": "2024-10-20T00:00:00",
+    "UserId": 2
+  },
+  {
+    "Id": 5,
+    "Name": "Product Launch",
+    "DueDate": "2024-11-01T00:00:00",
+    "UserId": 2
+  },
+  {
+    "Id": 6,
+    "Name": "Budget Review Meeting",
+    "DueDate": "2024-11-05T00:00:00",
+    "UserId": 3
+  }
+]

@@ -1,15 +1,25 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
-# Compiled output
+# Compiled output and build artifacts
 /dist
+/client/dist
+/server/dist
 /tmp
+/client/tmp
+/server/tmp
 /out-tsc
+/client/out-tsc
+/server/out-tsc
 /bazel-out
 
-# Node
+# Node.js dependencies for both client and server
 /node_modules
-npm-debug.log
-yarn-error.log
+/client/node_modules
+/server/node_modules
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+client/npm-debug.log*
+server/npm-debug.log*
 
 # IDEs and editors
 .idea/
@@ -28,14 +38,29 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
-# Miscellaneous
+# Angular specific
 /.angular/cache
-.sass-cache/
-/connect.lock
+/client/.angular/cache
+
+# Test coverage
 /coverage
+/client/coverage
+/server/coverage
+
+# Logs for test or other tools
+/client/testem.log
+/server/testem.log
+
+# Miscellaneous
+/sass-cache/
+/connect.lock
 /libpeerconnection.log
-testem.log
 /typings
+
+# Environment variables
+.env
+/client/.env
+/server/.env
 
 # System files
 .DS_Store
