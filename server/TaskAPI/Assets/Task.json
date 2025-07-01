@@ -4,7 +4,7 @@
     "Description": "Prepare project outline",
     "PriorityLevel": 2,
     "EventId": 1,
-    "Completed": true
+    "Completed": false
   },
   {
     "Id": 3,
@@ -39,7 +39,7 @@
     "Description": "Update client on project progress",
     "PriorityLevel": 1,
     "EventId": 2,
-    "Completed": false
+    "Completed": true
   },
   {
     "Id": 9,
@@ -60,7 +60,7 @@
     "Description": "Review feedback from client",
     "PriorityLevel": 2,
     "EventId": 2,
-    "Completed": false
+    "Completed": true
   },
   {
     "Id": 12,

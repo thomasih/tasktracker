@@ -1,27 +1,46 @@
-# Tasktracker
+# TaskTracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
+A full-stack task and event management system built with .NET Core and Angular.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- User authentication with hashed passwords
+- CRUD operations for tasks and events
+- Light/dark theme toggle
+- Modular component-based architecture
 
-## Code scaffolding
+## Tech Stack
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Frontend: Angular
+- Backend: .NET Core Web API (C#)
+- Storage: JSON/in-memory database
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Backend Setup
+cd server/TaskAPI  
+dotnet build  
+dotnet run
 
-## Running unit tests
+### Frontend Setup
+cd client  
+npm install  
+ng serve
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### API Testing
+Use the `TaskTracker.http` file in the backend root to explore available endpoints.
 
-## Running end-to-end tests
+## Project Structure
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Model/ - Entity classes and repository interfaces
+- Controllers/ - API endpoints
+- Helpers/ - Utility functions (e.g., password hashing)
+- client/src/app/ - Angular component structure
 
-## Further help
+## Notes
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This was an early full-stack project and may lack production-level polish. Clean-up and refactoring in progress.
+
+## Author
+
+Thomas Haile — GitHub: @thomasih
